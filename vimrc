@@ -99,12 +99,28 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
-" Syntastic Settings
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_enable_signs = 1
-
 "Better spell checking
 hi clear SpellBad
 hi SpellBad cterm=underline
 set spell
+
+" Check if a colorscheme exists
+" http://stackoverflow.com/a/5703164
+function! HasColorScheme(scheme)
+    let path = '~/.vim/bundle/vim-colorschemes/colors/' . a:scheme . '.vim'
+    return filereadable(expand(path))
+endfunction
+
+if HasColorScheme('wombat256mod')
+    colorscheme wombat256mod
+endif
+
+" vim-airline
+if filereadable(expand("~/.vim/bundle/vim-airline/plugin/airline.vim"))
+    set laststatus=2
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#fnamemod = ':t'
+    let g:airline#extensions#branch#enabled = 1
+    let g:airline#extensions#syntastic#enabled = 1
+    let g:airline_powerline_fonts = 1
+endif

@@ -8,14 +8,13 @@ fn installplugin(name) {
 
 chdir($PATHOGENDIR)
 
+installplugin("bling/vim-airline")
+installplugin("flazz/vim-colorschemes")
 installplugin("godlygeek/tabular")
 installplugin("scrooloose/nerdcommenter")
 installplugin("tpope/vim-markdown")
 installplugin("gcmt/wildfire.vim")
-installplugin("majutsushi/tagbar")
 installplugin("ntpeters/vim-better-whitespace")
-installplugin("ap/vim-buftabline")
-installplugin("itchyny/lightline.vim")
 installplugin("elzr/vim-json")
 installplugin("katcipis/vim-go")
 installplugin("LaTeX-Box-Team/LaTeX-Box")
