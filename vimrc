@@ -34,72 +34,7 @@ set softtabstop=4
 set expandtab
 set autoindent
 
-call plug#begin('~/.config/nvim/plugged')
-
-"Clorscheme
-Plug 'katcipis/gruvbox'
-
-"Align stuff
-Plug 'godlygeek/tabular'
-"Comment code
-Plug 'scrooloose/nerdcommenter'
-
-"Syntax correction
-"Plug 'w0rp/ale'
-Plug 'scrooloose/syntastic'
-
-"markdown magic
-Plug 'tpope/vim-markdown'
-
-"Extended object selection
-Plug 'gcmt/wildfire.vim'
-
-"tagbar without airline
-Plug 'majutsushi/tagbar'
-
-"Working with invisible stuff :-)
-Plug 'ntpeters/vim-better-whitespace'
-
-"Add cool tabs for buffers
-Plug 'ap/vim-buftabline'
-
-" Like airline, but smaller
-Plug 'itchyny/lightline.vim'
-
-" Autocomplete
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'zchee/deoplete-go', { 'do': 'make'}
-
-" JSON
-Plug 'elzr/vim-json'
-
-" GoLang
-Plug 'katcipis/vim-go'
-
-" Hell yeah latex !!!
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-
-" Javascript plugins
-Plug 'moll/vim-node'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'vim-scripts/JavaScript-Indent'
-
-" Python plugins
-" Plug 'google/yapf'
-" Plug 'davidhalter/jedi-vim'
-" Plug 'hynek/vim-python-pep8-indent'
-" Plug 'nvie/vim-flake8'
-
-" Scala stuff, for Gatling
-Plug 'derekwyatt/vim-scala'
-
-" Lisp
-Plug 'kovisoft/slimv'
-
-" Fuzzy file searching
-Plug 'ctrlpvim/ctrlp.vim'
-
-call plug#end()
+execute pathogen#infect()
 
 "display tabs and trailing spaces
 set list
@@ -169,16 +104,7 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_enable_signs = 1
 
-" Use deoplete.
-" let g:deoplete#enable_at_startup = 1
-
-
 "Better spell checking
 hi clear SpellBad
 hi SpellBad cterm=underline
 set spell
-
-"Colorscheme config
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme gruvbox
-set background=dark    " Setting dark mode

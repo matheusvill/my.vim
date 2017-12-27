@@ -1,25 +1,23 @@
-NVIM_HOME=$(HOME)/.config/nvim
-NVIM_SPELL=$(NVIM_HOME)/spell
+VIM_HOME=$(HOME)/.vim
 
-all: uninstall install
-	echo "Installing vim-plug"
-	curl -fLo $(NVIM_HOME)/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	nvim +PlugInstall
-	nvim +UpdateRemotePlugins
-	nvim +GoInstallBinaries
+all: uninstall install plugins
 
 bootstrap:
-	sudo pacman --noconfirm -S neovim python-neovim ctags
+	sudo pacman --noconfirm -S vim ctags
 
-install: 
+plugins:
+	./plugins.sh
+	vim "+GoInstallBinaries" "+qall"
+
+install:
+	echo "Install pathogen"
+	mkdir -p $(VIM_HOME)/autoload $(VIM_HOME)/bundle && \
+	curl -LSso $(VIM_HOME)/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 	echo "Copying vimrc"
-	mkdir -p $(NVIM_HOME)
-	cp vimrc $(NVIM_HOME)/init.vim
+	cp vimrc $(HOME)/.vimrc
 	echo "Install ftplugin"
-	cp -pr ./ftplugin  $(NVIM_HOME)
-	cp -pr ./ftdetect  $(NVIM_HOME)
-	mkdir -p $(NVIM_SPELL)
-	curl "http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl" -o $(NVIM_SPELL)/en.utf-8.spl
+	cp -pr ./ftplugin  $(VIM_HOME)
+	cp -pr ./ftdetect  $(VIM_HOME)
 
 uninstall:
-	rm -rf $(NVIM_HOME)
+	rm -rf $(VIM_HOME)
