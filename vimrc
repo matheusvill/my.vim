@@ -40,10 +40,6 @@ execute pathogen#infect()
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
-" Highlight only the lines that go past 80 characters
-highlight ColorColumn ctermbg=green guibg=green
-call matchadd('ColorColumn', '\%80v', 80)
-
 " Get that filetype stuff happening
 filetype on
 filetype plugin on
